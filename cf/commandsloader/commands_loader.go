@@ -11,6 +11,7 @@ import (
 	"code.cloudfoundry.org/cli/cf/commands/plugin"
 	"code.cloudfoundry.org/cli/cf/commands/pluginrepo"
 	"code.cloudfoundry.org/cli/cf/commands/quota"
+	"code.cloudfoundry.org/cli/cf/commands/reports"
 	"code.cloudfoundry.org/cli/cf/commands/route"
 	"code.cloudfoundry.org/cli/cf/commands/routergroups"
 	"code.cloudfoundry.org/cli/cf/commands/securitygroup"
@@ -43,6 +44,7 @@ func Load() {
 	_ = plugin.Plugins{}
 	_ = pluginrepo.RepoPlugins{}
 	_ = quota.CreateQuota{}
+	_ = reports.ListBuildpackUsage{}
 	_ = route.CreateRoute{}
 	_ = routergroups.RouterGroups{}
 	_ = securitygroup.ShowSecurityGroup{}

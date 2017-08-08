@@ -20,6 +20,7 @@ import (
 
 type Repository interface {
 	Create(params models.AppParams) (createdApp models.Application, apiErr error)
+	ListAllApps() ([]models.Application, error)
 	GetApp(appGUID string) (models.Application, error)
 	Read(name string) (app models.Application, apiErr error)
 	ReadFromSpace(name string, spaceGUID string) (app models.Application, apiErr error)
@@ -67,6 +68,26 @@ func (repo CloudControllerRepository) GetApp(appGUID string) (app models.Applica
 
 	app = appResources.ToModel()
 	return
+}
+
+func (repo CloudControllerRepository) ListAllApps() ([]models.Application, error) {
+	apps := []models.Application{}
+	err := repo.gateway.ListPaginatedResources(
+		repo.config.APIEndpoint(),
+		"/v2/apps",
+		resources.ApplicationResource{},
+		func(resource interface{}) bool {
+			if appResource, ok := resource.(resources.ApplicationResource); ok {
+				apps = append(apps, appResource.ToModel())
+				return true
+			}
+			return false
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return apps, nil
 }
 
 func (repo CloudControllerRepository) Read(name string) (app models.Application, apiErr error) {

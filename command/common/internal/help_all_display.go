@@ -65,6 +65,7 @@ var HelpCategoryList = []HelpCategory{
 		CategoryName: "BUILDPACKS:",
 		CommandList: [][]string{
 			{"buildpacks", "create-buildpack", "update-buildpack", "rename-buildpack", "delete-buildpack"},
+			{"buildpack-usage"},
 		},
 	},
 	{

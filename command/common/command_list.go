@@ -42,6 +42,7 @@ type commandList struct {
 	BindService                        v2.BindServiceCommand                        `command:"bind-service" alias:"bs" description:"Bind a service instance to an app"`
 	BindStagingSecurityGroup           v2.BindStagingSecurityGroupCommand           `command:"bind-staging-security-group" description:"Bind a security group to the list of security groups to be used for staging applications"`
 	Buildpacks                         v2.BuildpacksCommand                         `command:"buildpacks" description:"List all buildpacks"`
+	BuildpackUsage                     v2.BuildpackUsageCommand                     `command:"buildpack-usage" description:"List which apps use which buildpacks"`
 	CheckRoute                         v2.CheckRouteCommand                         `command:"check-route" description:"Perform a simple check to determine whether a route currently exists or not"`
 	Config                             v2.ConfigCommand                             `command:"config" description:"Write default values to the config"`
 	CopySource                         v2.CopySourceCommand                         `command:"copy-source" description:"Copies the source code of an application to another existing application (and restarts that application)"`
